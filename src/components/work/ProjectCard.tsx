@@ -89,9 +89,16 @@ export default function ProjectCard({
 
             <div className="flex items-start justify-between gap-4 px-3 py-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider opacity-80">
-                  {project.category}
-                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-xs font-semibold uppercase tracking-wider opacity-80">
+                    {project.category}
+                  </p>
+                  {project.detail && (
+                    <span className="rounded-full border border-current px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider opacity-80">
+                      Full case study
+                    </span>
+                  )}
+                </div>
                 <h3 className="mt-1 font-display text-2xl font-extrabold tracking-tight">
                   {project.title}
                 </h3>
