@@ -59,6 +59,32 @@ export default function ProjectCard({
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
               />
+
+              {/* Figma-style selection redlines — a designer's wink, on hover. */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              >
+                {/* selection frame */}
+                <div className="absolute inset-0.75 rounded-2xl border-[1.5px] border-blue" />
+                {/* corner handles */}
+                {["left-[1px] top-[1px]", "right-[1px] top-[1px]", "left-[1px] bottom-[1px]", "right-[1px] bottom-[1px]"].map(
+                  (pos) => (
+                    <span
+                      key={pos}
+                      className={`absolute ${pos} h-2 w-2 rounded-xs border-[1.5px] border-blue bg-white`}
+                    />
+                  )
+                )}
+                {/* layer-name tag */}
+                <span className="absolute left-2 top-2 rounded-sm bg-blue px-1.5 py-0.5 font-mono text-[10px] font-medium leading-none text-white">
+                  {project.title}
+                </span>
+                {/* width × height dimension pill */}
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-sm bg-pink px-1.5 py-0.5 font-mono text-[10px] font-medium leading-none text-white">
+                  720 × 450
+                </span>
+              </div>
             </div>
 
             <div className="flex items-start justify-between gap-4 px-3 py-4">

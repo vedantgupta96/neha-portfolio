@@ -44,12 +44,13 @@ All site content (bio, projects, links) lives in
 array; write a full case study by filling in that project's `detail` object.
 Images go in [`public/images/`](public/images/).
 
-See [`CLAUDE.md`](CLAUDE.md) for the full editing guide, project structure, and
-design-token reference.
+See [`AGENTS.md`](AGENTS.md) for the full editing guide, project structure, and
+design-token reference (it's the shared guide for any coding agent — Codex,
+Claude Code, etc.).
 
 ## Deployment
 
 Hosted on **Vercel**. Pushing to `main` triggers an automatic deploy.
 
 > Note: the `neha-sehgal.com` custom domain is not yet pointed here — see the
-> TODO in `CLAUDE.md`.
+> TODO in `AGENTS.md`.
