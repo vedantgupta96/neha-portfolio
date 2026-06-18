@@ -53,7 +53,7 @@ export const projects: Project[] = [
     summary: "Co-working space app for seamless collaboration and booking.",
     category: "Product Design · Mobile",
     cover: "/images/awfis.png",
-    accent: "#FF7A59",
+    accent: "#ff4d8d",
   },
   {
     slug: "google-ads",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     summary: "A CRM ecosystem with AI-driven sales automation.",
     category: "Product Design · Enterprise",
     cover: "/images/google-ads.png",
-    accent: "#4285F4",
+    accent: "#5a6cff",
   },
   {
     slug: "nokia",
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     summary: "A responsive platform for monetizing 5G network data.",
     category: "Product Design · Web",
     cover: "/images/nokia.png",
-    accent: "#1FB6FF",
+    accent: "#57e2ff",
   },
   {
     slug: "pearl-academy",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     summary: "iOS & Android app enhancing the student experience.",
     category: "Product Design · Mobile",
     cover: "/images/pearl-academy.png",
-    accent: "#C6F24E",
+    accent: "#b6e948",
   },
   {
     slug: "cradles-to-crayons",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     summary: "A web platform that streamlines clothing donations.",
     category: "Product Design · Web · Social",
     cover: "/images/cradles-to-crayons.png",
-    accent: "#FFB020",
+    accent: "#ffd23f",
   },
   {
     slug: "linkedin",
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     summary: "A design case study on networking for students.",
     category: "Case Study · Concept",
     cover: "/images/linkedin.png",
-    accent: "#0A66C2",
+    accent: "#c99bf7",
   },
   {
     slug: "give-and-grow",
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     summary: "An app for exchanging gently-used children's products.",
     category: "Product Design · Mobile · Social",
     cover: "/images/give-and-grow.png",
-    accent: "#7C5CFF",
+    accent: "#ff4d8d",
   },
   {
     slug: "outline-india",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     summary: "A dashboard and mobile app for field survey management.",
     category: "Product Design · Data",
     cover: "/images/outline-india.png",
-    accent: "#19C39C",
+    accent: "#57e2ff",
   },
   {
     slug: "rethinking-interaction",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     summary: "A conceptual, pet-centric exploration of interaction design.",
     category: "Concept · Exploration",
     cover: "/images/rethinking-interaction.png",
-    accent: "#FF5C8A",
+    accent: "#b6e948",
   },
 ];
 

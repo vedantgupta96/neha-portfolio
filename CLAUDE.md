@@ -44,12 +44,24 @@ src/
 └── data/projects.ts          # ← EDIT THIS for content
 ```
 
-## Design tokens
+## Design tokens & theming
 
-Colors and fonts live in `src/app/globals.css`:
-- `--accent` electric lime `#c6f24e` (primary)
-- `--accent-2` violet `#7c5cff` (3D hero gradient)
-- Fonts: Space Grotesk (display), Inter (body)
+Colors and fonts live in `src/app/globals.css`.
+
+- **Two themes** via `[data-theme="light|dark"]` on `<html>`:
+  - Light bg = periwinkle `#eceaff`; Dark bg = deep grape `#141030` (neither
+    black nor white). White "paper" cards (`--paper`) accent both.
+- **Candy accent palette** (shared by both themes): `--pink #ff4d8d`,
+  `--lime #b6e948`, `--cyan #57e2ff`, `--blue #5a6cff`, `--lavender #c99bf7`,
+  `--yellow #ffd23f`. Each project card uses one as its background.
+- **Fonts:** Bricolage Grotesque (display), Inter (body).
+- **Theme switch** = a slow diagonal circular reveal (View Transitions API).
+  Logic in `src/components/theme/ThemeProvider.tsx`; the clip-path keyframes
+  (`theme-reveal`) live in `globals.css`. Falls back to an instant toggle in
+  browsers without the API and respects `prefers-reduced-motion`.
+
+Motion lives in the components via Framer Motion (springy hovers, scroll
+parallax in `Hero`/`ProjectCard`, floating shapes, the marquee).
 
 ## Run locally
 

@@ -39,7 +39,7 @@ export default async function CaseStudyPage({
       <div className="mx-auto max-w-4xl">
         <Link
           href="/#work"
-          className="text-sm text-muted transition-colors hover:text-foreground"
+          className="text-sm text-muted transition-colors hover:text-ink"
         >
           ← Back to work
         </Link>
@@ -55,7 +55,7 @@ export default async function CaseStudyPage({
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted">{project.summary}</p>
 
-        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10">
+        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-2xl border border-border">
           <Image
             src={project.cover}
             alt={`${project.title} cover`}
@@ -67,7 +67,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* ── Quick facts ─────────────────────────────────────────────── */}
-        <dl className="mt-12 grid grid-cols-2 gap-6 border-y border-white/5 py-8 sm:grid-cols-4">
+        <dl className="mt-12 grid grid-cols-2 gap-6 border-y border-border py-8 sm:grid-cols-4">
           {[
             { k: "Role", v: d?.role },
             { k: "Timeline", v: d?.timeline },
@@ -116,7 +116,7 @@ export default async function CaseStudyPage({
           </div>
         ) : (
           // Placeholder shown until the case study is written.
-          <div className="mt-12 rounded-2xl border border-dashed border-white/15 bg-white/[0.02] p-10 text-center">
+          <div className="mt-12 rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
             <p className="font-display text-xl font-bold">
               Case study coming soon
             </p>
@@ -129,7 +129,7 @@ export default async function CaseStudyPage({
           </div>
         )}
 
-        <div className="mt-16 border-t border-white/5 pt-10">
+        <div className="mt-16 border-t border-border pt-10">
           <Link
             href="/#contact"
             className="font-display text-2xl font-bold transition-colors hover:text-accent"

@@ -4,32 +4,34 @@ import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+const CANDY = ["#ff4d8d", "#b6e948", "#57e2ff", "#5a6cff", "#c99bf7", "#ffd23f"];
+
 /**
- * A drifting particle cloud shaped into a sphere, with a violet→lime gradient.
- * Rotates slowly and parallax-tilts toward the pointer. Pure R3F, no heavy deps.
+ * A drifting confetti cloud shaped into a sphere using the candy palette.
+ * Rotates slowly and parallax-tilts toward the pointer.
  */
-function ParticleField({ count = 3500 }: { count?: number }) {
+function ConfettiField({ count = 2600 }: { count?: number }) {
   const ref = useRef<THREE.Points>(null);
 
   const { positions, colors } = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const a = new THREE.Color("#7c5cff"); // violet
-    const b = new THREE.Color("#c6f24e"); // lime
-    const tmp = new THREE.Color();
+    const palette = CANDY.map((c) => new THREE.Color(c));
 
     for (let i = 0; i < count; i++) {
-      // Even-ish distribution on a sphere shell, with a little radial jitter.
-      const r = 1.15 + Math.random() * 0.25;
+      const r = 1.1 + Math.random() * 0.35;
       const theta = Math.acos(2 * Math.random() - 1);
       const phi = Math.random() * Math.PI * 2;
-      const x = r * Math.sin(theta) * Math.cos(phi);
-      const y = r * Math.sin(theta) * Math.sin(phi);
-      const z = r * Math.cos(theta);
-      positions.set([x, y, z], i * 3);
-
-      tmp.copy(a).lerp(b, (y + r) / (2 * r));
-      colors.set([tmp.r, tmp.g, tmp.b], i * 3);
+      positions.set(
+        [
+          r * Math.sin(theta) * Math.cos(phi),
+          r * Math.sin(theta) * Math.sin(phi),
+          r * Math.cos(theta),
+        ],
+        i * 3
+      );
+      const c = palette[(Math.random() * palette.length) | 0];
+      colors.set([c.r, c.g, c.b], i * 3);
     }
     return { positions, colors };
   }, [count]);
@@ -37,10 +39,9 @@ function ParticleField({ count = 3500 }: { count?: number }) {
   useFrame((state, delta) => {
     const p = ref.current;
     if (!p) return;
-    p.rotation.y += delta * 0.05;
-    // subtle parallax tilt following the cursor
-    p.rotation.x = THREE.MathUtils.lerp(p.rotation.x, state.pointer.y * 0.35, 0.04);
-    p.rotation.z = THREE.MathUtils.lerp(p.rotation.z, -state.pointer.x * 0.15, 0.04);
+    p.rotation.y += delta * 0.06;
+    p.rotation.x = THREE.MathUtils.lerp(p.rotation.x, state.pointer.y * 0.4, 0.04);
+    p.rotation.z = THREE.MathUtils.lerp(p.rotation.z, -state.pointer.x * 0.2, 0.04);
   });
 
   return (
@@ -50,13 +51,12 @@ function ParticleField({ count = 3500 }: { count?: number }) {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.022}
+        size={0.03}
         vertexColors
         sizeAttenuation
         transparent
         opacity={0.95}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
       />
     </points>
   );
@@ -69,7 +69,7 @@ export default function Hero3D() {
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >
-      <ParticleField />
+      <ConfettiField />
     </Canvas>
   );
 }
